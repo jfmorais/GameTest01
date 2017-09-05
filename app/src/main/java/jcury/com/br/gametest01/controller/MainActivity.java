@@ -30,13 +30,13 @@ public class MainActivity extends GameActivity{
     }
 
     public void setupParameters(){
-        GameParameterSingleton.ORIENTATION = GameParameterSingleton.PORTRAIT;
+        GameParameterSingleton.ORIENTATION = GameParameterSingleton.LANDSCAPE;
         GameParameterSingleton.HEIGHT = getWindowManager().getDefaultDisplay().getHeight();
         GameParameterSingleton.WIDTH = getWindowManager().getDefaultDisplay().getWidth();
 
         //GameParameterSingleton.assetManager = getAssets();
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(GameParameterSingleton.ORIENTATION);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //tela cheia
         requestWindowFeature(Window.FEATURE_NO_TITLE);//sem titulo
     }

@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
 
+import jcury.com.br.gametest01.model.Goku;
 import jcury.com.br.gametest01.model.InfiniteBackground;
 import jcury.com.br.gametest01.singleton.GameParameterSingleton;
 
@@ -20,7 +21,8 @@ public class GameScreen extends View implements Runnable{
     private int i;
     private Paint paint;
 
-    public InfiniteBackground bg;
+    private InfiniteBackground bg;
+    private Goku goku;
 
     private static String TAG = "GAMETEST_GameScreen";
 
@@ -32,27 +34,34 @@ public class GameScreen extends View implements Runnable{
     public void update(){
         if (update){
             bg.update();
+            goku.update();
         }
     }
 
     public void onDraw(Canvas canvas){
 //        canvas.drawText("Valor do i: "+i, 50, 100, paint);
         bg.draw(canvas);
+        goku.draw(canvas);
     }
 
     public void init(){
         i=0;
         update=true;
         paint = new Paint();
-//       paint.setColor(Color.BLACK);
 
         //cria objetos de jogo
         bg = new InfiniteBackground(this.getContext());
+
         //definindo fator de distorcao
         GameParameterSingleton.DISTORTION = (float) GameParameterSingleton.HEIGHT / bg.getH();
-//        bg.setW((int) ( bg.getW() * GameParameterSingleton.DISTORTION));
-//        bg.setH((int) ( bg.getH() * GameParameterSingleton.DISTORTION));
+
         bg.updateDistortion();
+
+        goku = new Goku(this.getContext());
+        goku.setX(50);
+        goku.setY(50);
+        goku.updateDistortion();
+
     }
 
     @Override

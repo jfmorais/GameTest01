@@ -82,8 +82,8 @@ public class InfiniteBackground{
 
 
         if(first.right<=0){
-            first.right = second.right;
-            first.left = second.right + w;
+            first.left = second.right;
+            first.right = second.right + w;
         }
 
         if(second.right <=0){

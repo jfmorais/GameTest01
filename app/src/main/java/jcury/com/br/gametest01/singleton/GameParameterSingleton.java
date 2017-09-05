@@ -8,8 +8,8 @@ import android.content.res.AssetManager;
 
 public class GameParameterSingleton {
 
-    public static final int PORTRAIT = 0;
-    public static final int LANDSCAPE = 1;
+    public static final int PORTRAIT = 1;
+    public static final int LANDSCAPE = 0;
 
     public static int ORIENTATION;
     public static int WIDTH;
