@@ -13,6 +13,19 @@ public abstract class GameObject {
     private int y;
     private int h;
     private int w;
+    private BoundingBox b;
+
+    public GameObject(){
+        b = new BoundingBox();
+    }
+
+    public BoundingBox getBoundingBox() {
+        return b;
+    }
+
+    public void setBoundingBox(BoundingBox b) {
+        this.b = b;
+    }
 
     public abstract void update();
     public abstract void draw(Canvas c);

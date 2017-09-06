@@ -1,12 +1,15 @@
 package jcury.com.br.gametest01.view;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
+import jcury.com.br.gametest01.R;
 import jcury.com.br.gametest01.model.Goku;
 import jcury.com.br.gametest01.model.InfiniteBackground;
 import jcury.com.br.gametest01.singleton.GameParameterSingleton;
@@ -62,6 +65,26 @@ public class GameScreen extends View implements Runnable{
         goku.setY(50);
         goku.updateDistortion();
 
+        //ajustando box do goku
+        goku.getBoundingBox().setW(goku.getW()/2);
+        goku.getBoundingBox().setH(goku.getH()/2);
+        goku.getBoundingBox().setX(goku.getX() + (goku.getW() - goku.getBoundingBox().getW())/2);
+        goku.getBoundingBox().setY(goku.getY() + (goku.getH() - goku.getBoundingBox().getH())/2);
+
+    }
+
+    public boolean onTouchEvent(MotionEvent evt){
+        if (evt.getAction() == MotionEvent.ACTION_DOWN){
+            goku.setDirecao(goku.SOBE);
+
+            return true;
+        }else if (evt.getAction() == MotionEvent.ACTION_UP) {
+            goku.setDirecao(goku.DESCE);
+
+
+            return true;
+        }
+        return false;
     }
 
     @Override
